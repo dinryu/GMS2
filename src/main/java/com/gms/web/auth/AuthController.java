@@ -16,7 +16,7 @@ import com.gms.web.command.CommandDTO;
 import com.gms.web.member.MemberDTO;
 import com.gms.web.member.MemberService;
 
-@Controller
+@Controller 
 @SessionAttributes("user")
 @RequestMapping("/auth") //아래 컨트롤러 결정
 public class AuthController {
