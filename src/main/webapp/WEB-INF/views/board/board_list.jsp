@@ -52,4 +52,3 @@
 		</tr>
 	</table>
 </div>
-<%@ include file="../common/footer.jsp" %>

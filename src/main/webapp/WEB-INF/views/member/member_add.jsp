@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:include page="../common/header.jsp"/>
 <div id="container">
-	<form id="join_form" onsubmit="memberAdd()">
+	<form id="join_form" >
 		<fieldset>
 		<legend>Join information:</legend>
 		<span id="join_id">ID: </span>
@@ -33,13 +33,17 @@
 		<input type="checkbox" name="subject" value="javascript" />자바스크립트<br />
 		<input type="checkbox" name="subject" value="sql" />SQL<br />
 		<input type="checkbox" name="subject" value="python" />파이썬<br />
-		<input id="join_yes_btn"  type="submit" value="등록"/>
+		<!--1. 아래 id="join_yes_btn" 클릭하면 alert  -->
+		<input id="join_yes_btn" type="submit" value="등록"/>
 		<input id="join_no_btn" type="reset" value="취소"/>
 		<input type="hidden" name="action" value="join" />
 		<input type="hidden" name="page" value="main" />
 		</fieldset>
 	</form>
 </div>
+<<script>
+app.member.insert();
+</script>
 
 
 

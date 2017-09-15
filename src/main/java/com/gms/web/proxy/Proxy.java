@@ -8,10 +8,8 @@ import lombok.Getter;
 @Component
 public abstract class Proxy {
 
-	HttpServletRequest request;
-	public HttpServletRequest getRequest() {
-		return request;
-	}
+	@Getter HttpServletRequest request; 
+	
 	public Proxy(HttpServletRequest request){
 		this.request=request;
 	}

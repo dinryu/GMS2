@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<jsp:include page="../common/header.jsp"/>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <header>
-<jsp:include page="../common/navbar.jsp"/>
 </header>
 <div id="container">
 <div class="row">
@@ -14,7 +13,7 @@
     </div><!-- /input-group -->
   </div><!-- /.col-lg-6 -->
 </div><!-- /.row -->
-<div style="height: 40px;width:300px;"></div>
+<div style="height: 40px;width:300px;">회원수 : ${count}</div>
 	<table id="member_list_tab">
 		<tr>
 			<th>No.</th>
@@ -27,20 +26,20 @@
 			<th>등록일</th>
 			<th>수정/삭제</th>
 		</tr>
-		<c:forEach var="i" items="${requestScope.list}">
+		<c:forEach var="i" items="${list}">
 		<tr>
 			<td>${i.num}</td>
 			<td>${i.id}</td>
-			<td><a onclick="detailStudent('${i.id}')">${i.name}</a></td>
+			<td><a onclick="app.controller.detailStudent('${i.id}')">${i.name}</a></td>
 			<td>${i.ssn}</td>
 			<td>${i.phone}</td>
 			<td>${i.email}</td>
 			<td>${i.title}</td>
 			<td>${i.regdate}</td>
 			<td>
-			<a onclick="updateStudent('${i.id}')">수정</a>
+			<a onclick="app.controller.updateStudent('${i.id}')">수정</a>
 			/
-			<a onclick="deleteStudent('${i.id}')">삭제</a>
+			<a onclick="app.controller.deleteStudent('${i.id}')">삭제</a>
 			</td>
 			
 		</tr>
@@ -48,38 +47,39 @@
 	</table>
 	<nav aria-label="Page navigation" style="width:400px;margin: 0 auto;">
 	  <ul class="pagination">
-	  	<c:if test="${requestScope.prevBlock gt 0 }">
+	  	<c:if test="${prevBlock gt 0 }">
 	    <li>
-	    	<a onclick="list('member', 'member_list', '1')">
+	    	<a onclick="app.member.list('1')">
 	    		<span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span>
 	    	</a>
 	    </li>
 	    <li>
-	      <a onclick="list('member', 'member_list', '${requestScope.prevBlock}')" aria-label="Previous">
+	      <a onclick="list('member', 'member_list', '${prevBlock}')" aria-label="Previous">
 	        <span aria-hidden="true">&laquo;</span>
 	      </a>
 	    </li>
 	    </c:if>
-	    <c:forEach varStatus="i" begin="${requestScope.startPage}" 
-	    							end="${requestScope.endPage}" step="1">
+	    <c:forEach varStatus="i" 
+	               begin="${startPage}" 
+	    		   end="${endPage}" 
+	    		   step="1">
 	    	<c:choose>
-	    		<c:when test="${i.index eq requestScope.pageNumber}">
+	    		<c:when test="${i.index eq pageNumber}">
 	    			<li class="active"><a href="#">${i.index}</a></li>
 	    		</c:when>
 	    		<c:otherwise>
-	    			<li ><a href="#" onclick="list('member','member_list','${i.index}')">
-	    				${i.index}</a></li>
+	    			<li ><a href="#" onclick="app.member.list('member','member_list','${i.index}')">${i.index}</a></li>
 	    		</c:otherwise>
 	    	</c:choose>
 	    </c:forEach>
-	    <c:if test="${requestScope.nextBlock le requestScope.theNumberOfPages}">
+	    <c:if test="${nextBlock le theNumberOfPages}">
 	    	<li>
-		      	<a onclick="list('member', 'member_list', '${requestScope.endPage+1}')"  aria-label="Next">
+		      	<a onclick="list('member', 'member_list', '${endPage+1}')"  aria-label="Next">
 		        	<span aria-hidden="true">&raquo;</span>
 		      	</a>
 		    </li>
 	    	<li>	
-	    		<a onclick="list('member', 'member_list', '${requestScope.theNumberOfPages}')" >
+	    		<a onclick="list('member', 'member_list', '${theNumberOfPages}')" >
 	    			<span class="glyphicon glyphicon-step-forward" aria-hidden="true"></span>
 	    		</a>
 	    	</li>
@@ -87,8 +87,6 @@
 	  </ul>
 	</nav>
 </div>
-
-
 
 
 

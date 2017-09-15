@@ -1,15 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<jsp:include page="../common/header.jsp"/>
-<jsp:include page="../common/navbar.jsp"/>
 <div class="container" >
   <div class="row">
     <div class="col-sm-4">
-      <h3>학생관리</h3>
+      <h3>회원관리</h3>
 	      <ul id="main_ul_stu">
-			<li ><a>학생 추가</a></li>
-			<li ><a>학생정보 목록</a></li>
-			<li ><a>학생 정보</a></li>
-			<li ><a>학생정보 삭제</a></li>
+			<li ><a>회원 추가</a></li>
+			<li ><a>회원 목록</a></li>
+			<li ><a>회원 상세</a></li>
+			<li ><a>회원 삭제</a></li>
 		 </ul>
     </div>
     <div class="col-sm-4">
@@ -32,7 +30,6 @@
     </div>
   </div>
 </div>
-<jsp:include page="../common/footer.jsp" />
 <script>
 app.main.init();
 </script>

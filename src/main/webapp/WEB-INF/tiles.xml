@@ -5,9 +5,8 @@
 <tiles-definitions>
 	<definition name="public"
 	    template="/WEB-INF/views/common/layout.jsp">
-	    <put-attribute name="title"></put-attribute>
-	    <put-attribute name="header" 
-	    value="/WEB-INF/views/common/header.jsp" />
+	    <put-attribute name="title" value="" />
+	    <put-attribute name="header" value="" />	   
 	    <put-attribute name="content" value="" />
 	    <put-attribute name="footer" 
 	    value="/WEB-INF/views/common/footer.jsp"/>	
@@ -16,4 +15,19 @@
 	    <put-attribute name="content" 
 	    value="/WEB-INF/views/{1}/{2}.jsp" />
 	</definition>
+	
+	<definition name="auth"
+	    template="/WEB-INF/views/common/layout.jsp">
+	    <put-attribute name="title" value="" />
+	    <put-attribute name="header" value="/WEB-INF/views/common/navbar.jsp" />
+	    <put-attribute name="content" value="" />
+	    <put-attribute name="footer" 
+	    value="/WEB-INF/views/common/footer.jsp"/>	
+	</definition>
+	<definition name="auth:*/*.tiles" extends="auth">
+	    <put-attribute name="content" 
+	    value="/WEB-INF/views/{1}/{2}.jsp" />
+	</definition>
+	
+	
 </tiles-definitions>
